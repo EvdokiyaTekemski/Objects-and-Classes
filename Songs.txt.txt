@@ -1,0 +1,71 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Songs {
+    public static class songsGetSet {
+        private String typeList;
+        private String name;
+        private String time;
+
+        private String getTypeList(){
+            return typeList;
+
+        }
+        private void setTypeList(String typeList){
+            this.typeList=typeList;
+        }
+        private String getName(){
+            return name;
+        }
+        private void setName(String name){
+            this.name=name;
+        }
+        public String getTime(){
+            return time;
+        }
+        private void setTime(String time){
+            this.time=time;
+
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+
+        int numSongs = Integer.parseInt(scanner.nextLine());
+
+        List<songsGetSet> songsGetSet2 = new ArrayList<>();
+
+        for (int i = 0; i <numSongs ; i++) {
+            String []input = scanner.nextLine().split("_");
+
+            String type = input[0];
+            String name=input[1];
+            String time =input[2];
+
+            songsGetSet songsGetSet1=new songsGetSet();
+            songsGetSet1.setTypeList(type);
+            songsGetSet1.setName(name);
+            songsGetSet1.setTime(time);
+            songsGetSet2.add(songsGetSet1);
+
+        }
+        String typeList = scanner.next();
+        if(typeList.equals("all")){
+            for (songsGetSet song : songsGetSet2) {
+                System.out.println(song.getName());
+            }
+            }else {
+            for (songsGetSet song:songsGetSet2) {
+                if(song.getTypeList().equals(typeList)){
+                    System.out.println(song.getName());
+                }
+            }
+        }
+
+            }
+        }
+
+
