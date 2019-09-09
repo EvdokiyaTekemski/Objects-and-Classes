@@ -1,0 +1,84 @@
+package com.company;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    static  class Students{
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
+        }
+
+        public String getHometown() {
+            return hometown;
+        }
+
+        public void setHometown(String hometown) {
+            this.hometown = hometown;
+        }
+
+        //first name, last name, age and hometown.
+        String firstName;
+        String lastName;
+        String age;
+        String hometown;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+
+        String command = "";
+    List<Students> students = new ArrayList<>();
+        while (!"end".equals(command=scanner.nextLine())){
+            String[] input = command.split(" ");
+
+            String firstName=input[0];
+            String lastName=input[1];
+            String age=input[2];
+            String hometown=input[3];
+
+            Students st = new Students();
+            st.setFirstName(firstName);
+            st.setLastName(lastName);
+            st.setAge(age);
+            st.setHometown(hometown);
+
+            students.add(st);
+
+
+        }
+String correctTown=scanner.nextLine();
+
+        for (Students print:students
+             ) {
+            if (print.getHometown().equals(correctTown)) {
+                System.out.printf("%s %s is %s years old%n",print.getFirstName(),print.getLastName(),print.getAge());
+            }
+
+        }
+
+        }
+
+    }

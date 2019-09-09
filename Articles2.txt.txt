@@ -1,0 +1,70 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Articles2 {
+
+    public static class Command{
+        private String firstCommand;
+        private String secondCommand;
+        private String thirdCommand;
+
+        public String getThirdCommand() {
+            return thirdCommand;
+        }
+
+        public void setThirdCommand(String thirdCommand) {
+            this.thirdCommand = thirdCommand;
+        }
+
+        public String getFirstCommand() {
+            return firstCommand;
+        }
+
+        public void setFirstCommand(String firstCommand) {
+            this.firstCommand = firstCommand;
+        }
+
+        public String getSecondCommand() {
+            return secondCommand;
+        }
+
+        public void setSecondCommand(String secondCommand) {
+            this.secondCommand = secondCommand;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Command> listOfCommands= new ArrayList<>();
+
+        int n = Integer.parseInt(sc.nextLine());
+
+        while (n-->0){
+            String [] input = sc.nextLine().split(", ");
+            String firstCommand = input[0];
+            String secondCommand  = input[1];
+            String thirdCommand = input[2];
+
+            Command command = new Command();
+            command.setFirstCommand(firstCommand);
+            command.setSecondCommand(secondCommand);
+              command.setThirdCommand(thirdCommand);
+              listOfCommands.add(command);
+        }
+        String inputCommand= sc.nextLine();
+
+        if(inputCommand.equals("Title")){
+            listOfCommands.sort((a,b)->a.getFirstCommand().compareTo(b.getFirstCommand()));
+        }else  if(inputCommand.equals("content")){
+            listOfCommands.sort((a,b)->a.getSecondCommand().compareTo(b.getSecondCommand()));
+        }else {
+            listOfCommands.sort((a,b)->a.getThirdCommand().compareTo(b.getThirdCommand()));
+        }
+
+listOfCommands.stream().forEach(e-> System.out.printf("%s - %s: %s%n",e.getFirstCommand(),e.getSecondCommand(),e.getThirdCommand()));
+
+    }
+}
